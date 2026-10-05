@@ -26,6 +26,12 @@
 
 <!-- Generado por scripts/generate.mjs con Recharts: no edites entre los marcadores -->
 <!-- CHARTS:START -->
+<p align="center"><b>2</b> repos públicos · <b>0</b> ⭐ · <b>2</b> lenguajes · último push hace 3 días</p>
+
+<p align="center">
+<img src="./charts/languages.svg" alt="Lenguajes más usados" width="49%"/>
+<img src="./charts/timeline.svg" alt="Actividad creando proyectos" width="49%"/>
+</p>
 <!-- CHARTS:END -->
 
 <p align="center">
@@ -40,6 +46,19 @@
 ## 🚀 Proyectos
 
 <!-- PROJECTS:START -->
+### 📌 Destacados
+
+<p align="center">
+<a href="https://github.com/bielrocafndz/bunq-salary-splitter"><img src="https://github-readme-stats.vercel.app/api/pin/?username=bielrocafndz&repo=bunq-salary-splitter&theme=transparent&hide_border=true&title_color=a371f7&icon_color=a371f7&text_color=8b949e" alt="bunq-salary-splitter" width="49%"/></a>
+<a href="https://github.com/bielrocafndz/gatekeeper"><img src="https://github-readme-stats.vercel.app/api/pin/?username=bielrocafndz&repo=gatekeeper&theme=transparent&hide_border=true&title_color=a371f7&icon_color=a371f7&text_color=8b949e" alt="gatekeeper" width="49%"/></a>
+</p>
+
+### 🕒 Trabajando últimamente en
+
+| Proyecto | Descripción | Lenguaje | ⭐ | Actualizado |
+|:--|:--|:--|:-:|:--|
+| [**bunq-salary-splitter**](https://github.com/bielrocafndz/bunq-salary-splitter) | — | 🐍 Python | 0 | hace 3 días |
+| [**gatekeeper**](https://github.com/bielrocafndz/gatekeeper) | — | 🐹 Go | 0 | hace 5 meses |
 <!-- PROJECTS:END -->
 
 ## 🐍 Mis contribuciones
