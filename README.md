@@ -4,10 +4,10 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&duration=3000&pause=800&color=A371F7&center=true&vCenter=true&width=500&lines=Desarrollador%2Fa+web;Me+flipan+los+gr%C3%A1ficos+%F0%9F%93%8A;Siempre+aprendiendo+algo+nuevo" alt="typing"/>
+  <img src="https://readme-typing-svg.demolab.com?font=Fira Code&size=20&duration=3000&pause=800&color=A371F7&center=true&vCenter=true&width=500&lines=Full stack developer;I love (re)charts :D;Clean solutions, always looking forward" alt="typing"/>
 </p>
 
-## 🙋 Sobre mí
+## About me
 
 !- Añadir descripcion
 
