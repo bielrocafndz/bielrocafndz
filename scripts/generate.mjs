@@ -10,14 +10,18 @@ const R = require('recharts');
 const h = React.createElement;
 
 // ───────────── ⚙️ Configuración ─────────────
-const USER = process.env.GH_USER || 'TU_USUARIO';
+const USER = process.env.GH_USER || 'bielrocafndz';
 const TOKEN = process.env.GITHUB_TOKEN;
 const EXCLUDE = new Set([USER.toLowerCase()]); // añade aquí repos que no quieras mostrar
-const ACCENT = '#a371f7';
-const SECONDARY = '#58a6ff';
+
+// Paleta verde persa, a juego con el banner
+const ACCENT = '#3fd9c4';    // verde persa claro: títulos, líneas, puntos
+const SECONDARY = '#00a693'; // verde persa: rellenos
+const HIGHLIGHT = '#eafff9'; // menta muy claro: números destacados
+const TEXT = '#c9d1d9';
 const MUTED = '#8b949e';
-const GRID = '#8b949e33';
-const PALETTE = ['#a371f7', '#58a6ff', '#3fb950', '#f778ba', '#ffa657', '#79c0ff', '#d2a8ff'];
+const GRID = 'rgba(0,166,147,0.2)';
+const PALETTE = ['#3fd9c4', '#00a693', '#7ee8d6', '#2bb3a1', '#b8f5e8', '#00574d', '#ffd97a'];
 const LANG_COLORS = {
   JavaScript: '#f1e05a', TypeScript: '#3178c6', Python: '#3572A5', HTML: '#e34c26', CSS: '#563d7c',
   Java: '#b07219', 'C#': '#178600', 'C++': '#f34b7d', C: '#555555', Go: '#00ADD8', Rust: '#dea584',
@@ -27,8 +31,10 @@ const LANG_COLORS = {
 const LANG_EMOJI = {
   JavaScript: '🟨', TypeScript: '🟦', Python: '🐍', HTML: '🟧', CSS: '🎨', Java: '☕', Go: '🐹',
   Rust: '🦀', PHP: '🐘', Ruby: '💎', Kotlin: '🟪', Swift: '🕊️', Dart: '🎯', Vue: '💚', Shell: '🐚',
-  'Jupyter Notebook': '📓',
+  'Jupyter Notebook': '📓', 'C#': '🟪',
 };
+const MAX_LANG_AXES = 8;   // a partir de aquí, el resto se agrupa en "Other"
+const MIN_RADAR_AXES = 3;  // con menos lenguajes se dibujan barras
 
 // ───────────── GitHub API ─────────────
 async function gh(path) {
@@ -65,7 +71,8 @@ async function getLanguageTotals(repos) {
 
 // ───────────── Utilidades ─────────────
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const rtf = new Intl.RelativeTimeFormat('es', { numeric: 'auto' });
+const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
+const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
 function rel(date) {
   const days = Math.round((new Date(date) - Date.now()) / 86400000);
   if (Math.abs(days) < 30) return rtf.format(days, 'day');
@@ -93,34 +100,66 @@ ${subtitle ? `<text x="20" y="48" fill="${MUTED}" font-size="11">${esc(subtitle)
 }
 
 // ───────────── Gráficos ─────────────
+
+// Radar dinámico: un eje por cada lenguaje que tengas de verdad.
+// Con menos de MIN_RADAR_AXES lenguajes cambia solo a barras horizontales.
 function languagesChart(totals, repoCount) {
   const sum = Object.values(totals).reduce((a, b) => a + b, 0);
   const sorted = Object.entries(totals).sort((a, b) => b[1] - a[1]);
-  const data = sorted.slice(0, 6).map(([name, value], i) => ({
-    name, value, color: LANG_COLORS[name] || PALETTE[i % PALETTE.length],
+  const keep = sorted.length > MAX_LANG_AXES ? MAX_LANG_AXES - 1 : sorted.length;
+  const data = sorted.slice(0, keep).map(([name, value], i) => ({
+    name, pct: (value / sum) * 100, color: LANG_COLORS[name] || PALETTE[i % PALETTE.length],
   }));
-  const rest = sorted.slice(6).reduce((a, [, v]) => a + v, 0);
-  if (rest) data.push({ name: 'Otros', value: rest, color: '#6e7681' });
+  const rest = sorted.slice(keep).reduce((a, [, v]) => a + v, 0);
+  if (rest) data.push({ name: 'Other', pct: (rest / sum) * 100, color: '#6e7681' });
 
   const W = 460, H = 200;
-  const chart = h(R.PieChart, { width: 220, height: H },
-    h(R.Pie, {
-      data, dataKey: 'value', nameKey: 'name', cx: '50%', cy: '50%', innerRadius: 55, outerRadius: 88,
-      paddingAngle: 2, stroke: 'none', isAnimationActive: false,
-    }, data.map((d, i) => h(R.Cell, { key: i, fill: d.color })))
+  const title = 'Most used languages';
+  const subtitle = `By bytes of code across ${plural(repoCount, 'public repo')}`;
+
+  if (data.length < MIN_RADAR_AXES) {
+    const chart = h(R.BarChart, {
+      width: W, height: H, data, layout: 'vertical',
+      margin: { top: (H - data.length * 44) / 2, right: 64, left: 10, bottom: (H - data.length * 44) / 2 },
+    },
+      h(R.XAxis, { type: 'number', domain: [0, 100], hide: true }),
+      h(R.YAxis, { type: 'category', dataKey: 'name', width: 110, tick: { fill: TEXT, fontSize: 13 }, axisLine: false, tickLine: false }),
+      h(R.Bar, {
+        dataKey: 'pct', radius: [0, 6, 6, 0], barSize: 18, isAnimationActive: false,
+        background: { fill: GRID, radius: 6 },
+      },
+        data.map((d, i) => h(R.Cell, { key: i, fill: d.color })),
+        h(R.LabelList, {
+          dataKey: 'pct', position: 'right', fill: ACCENT, fontSize: 13, fontWeight: 600,
+          formatter: (v) => `${v.toFixed(1)}%`,
+        }))
+    );
+    return frame({ title, subtitle, width: W, height: H, chart });
+  }
+
+  // Escala raíz cuadrada: así los lenguajes pequeños se ven aunque uno domine.
+  // La leyenda sigue mostrando el porcentaje real.
+  const radarData = data.map((d) => ({ ...d, r: Math.sqrt(d.pct) }));
+  const chart = h(R.RadarChart, {
+    width: 260, height: H, data: radarData, cx: 130, cy: H / 2, outerRadius: 64,
+  },
+    h(R.PolarGrid, { stroke: GRID }),
+    h(R.PolarAngleAxis, { dataKey: 'name', tick: { fill: MUTED, fontSize: 11 } }),
+    h(R.PolarRadiusAxis, { domain: [0, 10], tick: false, axisLine: false }),
+    h(R.Radar, {
+      dataKey: 'r', stroke: ACCENT, strokeWidth: 2, fill: SECONDARY, fillOpacity: 0.35,
+      dot: { r: 3, fill: ACCENT, stroke: 'none' }, isAnimationActive: false,
+    })
   );
-  const center = `<text x="110" y="104" text-anchor="middle" fill="${ACCENT}" font-size="26" font-weight="700">${sorted.length}</text>
-<text x="110" y="120" text-anchor="middle" fill="${MUTED}" font-size="11">lenguajes</text>`;
+  const rowH = Math.min(24, (H - 10) / data.length);
+  const top = (H - rowH * data.length) / 2 + rowH * 0.7;
   const legend = data.map((d, i) => {
-    const y = 22 + i * 24;
-    return `<circle cx="240" cy="${y - 4}" r="5" fill="${d.color}"/>
-<text x="254" y="${y}" fill="${MUTED}" font-size="13">${esc(d.name)}</text>
-<text x="${W - 24}" y="${y}" fill="${MUTED}" font-size="13" text-anchor="end">${((d.value / sum) * 100).toFixed(1)}%</text>`;
+    const y = top + i * rowH;
+    return `<circle cx="282" cy="${y - 4}" r="5" fill="${d.color}"/>
+<text x="296" y="${y}" fill="${TEXT}" font-size="13">${esc(d.name)}</text>
+<text x="${W - 24}" y="${y}" fill="${i === 0 ? ACCENT : MUTED}" font-size="13" font-weight="${i === 0 ? 600 : 400}" text-anchor="end">${d.pct.toFixed(1)}%</text>`;
   }).join('');
-  return frame({
-    title: 'Lenguajes más usados', subtitle: `Por bytes de código en ${repoCount} repos públicos`,
-    width: W, height: H, chart, extra: center + legend,
-  });
+  return frame({ title, subtitle, width: W, height: H, chart, extra: legend });
 }
 
 function timelineChart(repos) {
@@ -131,7 +170,7 @@ function timelineChart(repos) {
   if (max - min >= 2) {
     data = [];
     for (let y = min; y <= max; y++) data.push({ label: String(y), count: years.filter((v) => v === y).length });
-    subtitle = 'Repos creados por año';
+    subtitle = 'Repos created per year';
   } else {
     // Si tu cuenta es joven, el gráfico cambia solo a vista mensual
     data = [];
@@ -139,18 +178,18 @@ function timelineChart(repos) {
       const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
       const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
       data.push({
-        label: d.toLocaleDateString('es', { month: 'short' }),
+        label: d.toLocaleDateString('en', { month: 'short' }),
         count: repos.filter((r) => r.created_at.slice(0, 7) === key).length,
       });
     }
-    subtitle = 'Repos creados en los últimos 12 meses';
+    subtitle = 'Repos created in the last 12 months';
   }
   const W = 460, H = 200;
   const chart = h(R.AreaChart, { width: W, height: H, data, margin: { top: 10, right: 32, left: 0, bottom: 0 } },
     h('defs', null,
       h('linearGradient', { id: 'areaGrad', x1: 0, y1: 0, x2: 0, y2: 1 },
-        h('stop', { offset: '0%', stopColor: ACCENT, stopOpacity: 0.5 }),
-        h('stop', { offset: '100%', stopColor: ACCENT, stopOpacity: 0 }))),
+        h('stop', { offset: '0%', stopColor: SECONDARY, stopOpacity: 0.55 }),
+        h('stop', { offset: '100%', stopColor: SECONDARY, stopOpacity: 0 }))),
     h(R.CartesianGrid, { strokeDasharray: '3 3', stroke: GRID, vertical: false }),
     h(R.XAxis, { dataKey: 'label', tick, axisLine: false, tickLine: false }),
     h(R.YAxis, { allowDecimals: false, width: 36, tick, axisLine: false, tickLine: false }),
@@ -159,7 +198,7 @@ function timelineChart(repos) {
       dot: { r: 3, fill: ACCENT, stroke: 'none' }, isAnimationActive: false,
     })
   );
-  return frame({ title: 'Mi actividad creando proyectos', subtitle, width: W, height: H, chart });
+  return frame({ title: 'Project activity', subtitle, width: W, height: H, chart });
 }
 
 function starsChart(repos) {
@@ -170,10 +209,10 @@ function starsChart(repos) {
   const chart = h(R.BarChart, { width: W, height: H, data, layout: 'vertical', margin: { top: 0, right: 48, left: 10, bottom: 0 } },
     h(R.XAxis, { type: 'number', hide: true }),
     h(R.YAxis, { type: 'category', dataKey: 'name', width: 140, tick, axisLine: false, tickLine: false }),
-    h(R.Bar, { dataKey: 'stars', fill: ACCENT, radius: [0, 6, 6, 0], barSize: 16, isAnimationActive: false },
-      h(R.LabelList, { dataKey: 'stars', position: 'right', fill: MUTED, fontSize: 12 }))
+    h(R.Bar, { dataKey: 'stars', fill: SECONDARY, radius: [0, 6, 6, 0], barSize: 16, isAnimationActive: false },
+      h(R.LabelList, { dataKey: 'stars', position: 'right', fill: ACCENT, fontSize: 12 }))
   );
-  return frame({ title: 'Proyectos con más estrellas', subtitle: 'Top repos por estrellas', width: W, height: H, chart });
+  return frame({ title: 'Most starred projects', subtitle: 'Top repos by stars', width: W, height: H, chart });
 }
 
 function topicsChart(counts) {
@@ -183,19 +222,22 @@ function topicsChart(counts) {
   const chart = h(R.RadarChart, { width: W, height: H, data, cx: W / 2, cy: H / 2, outerRadius: 80 },
     h(R.PolarGrid, { stroke: GRID }),
     h(R.PolarAngleAxis, { dataKey: 'topic', tick }),
-    h(R.Radar, { dataKey: 'count', stroke: SECONDARY, fill: SECONDARY, fillOpacity: 0.35, isAnimationActive: false })
+    h(R.Radar, {
+      dataKey: 'count', stroke: ACCENT, strokeWidth: 2, fill: SECONDARY, fillOpacity: 0.35,
+      dot: { r: 3, fill: ACCENT, stroke: 'none' }, isAnimationActive: false,
+    })
   );
-  return frame({ title: 'Temas de mis proyectos', subtitle: 'Según los topics de cada repo', width: W, height: H, chart });
+  return frame({ title: 'Project topics', subtitle: "Based on each repo's topics", width: W, height: H, chart });
 }
 
 // ───────────── Secciones del README ─────────────
 function projectsSection(repos) {
-  if (!repos.length) return '_Pronto habrá proyectos por aquí_ 🚧';
+  if (!repos.length) return '_Projects coming soon_ 🚧';
   const featured = [...repos]
     .sort((a, b) => b.stargazers_count - a.stargazers_count || new Date(b.pushed_at) - new Date(a.pushed_at))
     .slice(0, 4);
   const pin = (r) =>
-    `<a href="${r.html_url}"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=${r.name}&theme=transparent&hide_border=true&title_color=a371f7&icon_color=a371f7&text_color=8b949e" alt="${r.name}" width="49%"/></a>`;
+    `<a href="${r.html_url}"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=${r.name}&theme=transparent&hide_border=true&title_color=${ACCENT.slice(1)}&icon_color=${SECONDARY.slice(1)}&text_color=${MUTED.slice(1)}" alt="${r.name}" width="49%"/></a>`;
   const recent = [...repos].sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at)).slice(0, 6);
   const rows = recent.map((r) => {
     const name = `[**${r.name}**](${r.html_url})${r.homepage ? ` · [🔗 demo](${r.homepage})` : ''}`;
@@ -203,15 +245,15 @@ function projectsSection(repos) {
     const lang = r.language ? `${LANG_EMOJI[r.language] || '📦'} ${r.language}` : '—';
     return `| ${name} | ${desc} | ${lang} | ${r.stargazers_count} | ${rel(r.pushed_at)} |`;
   });
-  return `### 📌 Destacados
+  return `### 📌 Featured
 
 <p align="center">
 ${featured.map(pin).join('\n')}
 </p>
 
-### 🕒 Trabajando últimamente en
+### 🕒 Recently working on
 
-| Proyecto | Descripción | Lenguaje | ⭐ | Actualizado |
+| Project | Description | Language | ⭐ | Updated |
 |:--|:--|:--|:-:|:--|
 ${rows.join('\n')}`;
 }
@@ -240,18 +282,19 @@ const save = async (file, alt, svg) => {
 };
 
 const totals = await getLanguageTotals(repos);
+const langCount = Object.keys(totals).length;
 const topicCounts = {};
 for (const r of repos) for (const t of r.topics || []) topicCounts[t] = (topicCounts[t] || 0) + 1;
 const totalStars = repos.reduce((a, r) => a + r.stargazers_count, 0);
 
 // Cada gráfico aparece solo cuando tus datos lo justifican
-if (Object.keys(totals).length) await save('languages.svg', 'Lenguajes más usados', languagesChart(totals, repos.length));
-if (repos.length) await save('timeline.svg', 'Actividad creando proyectos', timelineChart(repos));
-if (repos.filter((r) => r.stargazers_count > 0).length >= 2) await save('stars.svg', 'Repos con más estrellas', starsChart(repos));
-if (Object.keys(topicCounts).length >= 3) await save('topics.svg', 'Temas de mis proyectos', topicsChart(topicCounts));
+if (langCount) await save('languages.svg', 'Most used languages', languagesChart(totals, repos.length));
+if (repos.length) await save('timeline.svg', 'Project activity', timelineChart(repos));
+if (repos.filter((r) => r.stargazers_count > 0).length >= 2) await save('stars.svg', 'Most starred projects', starsChart(repos));
+if (Object.keys(topicCounts).length >= 3) await save('topics.svg', 'Project topics', topicsChart(topicCounts));
 
 const summary = repos.length
-  ? `<p align="center"><b>${repos.length}</b> repos públicos · <b>${totalStars}</b> ⭐ · <b>${Object.keys(totals).length}</b> lenguajes · último push ${rel(repos[0].pushed_at)}</p>`
+  ? `<p align="center"><b>${repos.length}</b> public repo${repos.length === 1 ? '' : 's'} · <b>${totalStars}</b> ⭐ · <b>${langCount}</b> language${langCount === 1 ? '' : 's'} · last push ${rel(repos[0].pushed_at)}</p>`
   : '';
 const chartsMd = `${summary}
 
