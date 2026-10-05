@@ -1,6 +1,6 @@
 <!-- Banner animado -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:a371f7,100:58a6ff&height=180&section=header&text=Hola,%20soy%20TU_NOMBRE%20👋&fontSize=38&fontColor=ffffff&fontAlignY=35" alt="banner"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:a371f7,100:58a6ff&height=180&section=header&text=Hola,%20soy%20bielrocafndz%20👋&fontSize=38&fontColor=ffffff&fontAlignY=35" alt="banner"/>
 </p>
 
 <p align="center">
