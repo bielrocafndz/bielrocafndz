@@ -2,25 +2,16 @@
 <style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}</style>
 <rect x="0.5" y="0.5" width="459" height="271" rx="12" fill="none" stroke="#8b949e33"/>
 <text x="20" y="30" fill="#a371f7" font-size="16" font-weight="600">Lenguajes más usados</text>
-<text x="20" y="48" fill="#8b949e" font-size="11">Por bytes de código en 2 repos públicos</text>
-<g transform="translate(0,60)"><svg cx="50%" cy="50%" class="recharts-surface" width="220" height="200" viewBox="0 0 220 200"><title></title><desc></desc><defs><clipPath id="recharts1-clip"><rect x="5" y="5" height="190" width="210"></rect></clipPath></defs><g class="recharts-layer recharts-pie" tabindex="0"><g class="recharts-layer recharts-pie-sector" tabindex="-1"><path cx="110" cy="100" name="Go" stroke="none" fill="#00ADD8" color="#00ADD8" tabindex="-1" class="recharts-sector" d="M 198,100
+<text x="20" y="48" fill="#8b949e" font-size="11">Por bytes de código en 1 repos públicos</text>
+<g transform="translate(0,60)"><svg cx="50%" cy="50%" class="recharts-surface" width="220" height="200" viewBox="0 0 220 200"><title></title><desc></desc><defs><clipPath id="recharts1-clip"><rect x="5" y="5" height="190" width="210"></rect></clipPath></defs><g class="recharts-layer recharts-pie" tabindex="0"><g class="recharts-layer recharts-pie-sector" tabindex="-1"><path cx="110" cy="100" name="Python" stroke="none" fill="#3572A5" color="#3572A5" tabindex="-1" class="recharts-sector" d="M 198,100
     A 88,88,0,
     1,0,
-    29.761618739704858,136.13588483388108
-  L 59.85101171231553,122.58492802117567
-            A 55,55,0,
-            1,1,
-            165,100 Z" role="img"></path></g><g class="recharts-layer recharts-pie-sector" tabindex="-1"><path cx="110" cy="100" name="Python" stroke="none" fill="#3572A5" color="#3572A5" tabindex="-1" class="recharts-sector" d="M 31.071621987202093,138.91415095140687
-    A 88,88,0,
-    0,0,
     197.94639277768044,103.07115570982008
   L 164.96649548605026,101.91947231863755
             A 55,55,0,
-            0,1,
-            60.66976374200131,124.3213443446293 Z" role="img"></path></g></g></svg><text x="110" y="104" text-anchor="middle" fill="#a371f7" font-size="26" font-weight="700">2</text>
-<text x="110" y="120" text-anchor="middle" fill="#8b949e" font-size="11">lenguajes</text><circle cx="240" cy="18" r="5" fill="#00ADD8"/>
-<text x="254" y="22" fill="#8b949e" font-size="13">Go</text>
-<text x="436" y="22" fill="#8b949e" font-size="13" text-anchor="end">57.4%</text><circle cx="240" cy="42" r="5" fill="#3572A5"/>
-<text x="254" y="46" fill="#8b949e" font-size="13">Python</text>
-<text x="436" y="46" fill="#8b949e" font-size="13" text-anchor="end">42.6%</text></g>
+            1,1,
+            165,100 Z" role="img"></path></g></g></svg><text x="110" y="104" text-anchor="middle" fill="#a371f7" font-size="26" font-weight="700">1</text>
+<text x="110" y="120" text-anchor="middle" fill="#8b949e" font-size="11">lenguajes</text><circle cx="240" cy="18" r="5" fill="#3572A5"/>
+<text x="254" y="22" fill="#8b949e" font-size="13">Python</text>
+<text x="436" y="22" fill="#8b949e" font-size="13" text-anchor="end">100.0%</text></g>
 </svg>
