@@ -9,12 +9,15 @@
 
 ## About me
 
-!- Añadir descripcion
+## 🧑‍💻 About me
 
-- 🔭 Ahora mismo trabajando en **...**
-- 🌱 Aprendiendo **...**
-- 📊 Obsesionado/a con **Recharts, D3 y cualquier dashboard bonito**
-- 📫 Contacto: **tu@email.com** · [LinkedIn](https://linkedin.com/in/TU_USUARIO)
+I'm a **full stack developer** who enjoys turning data into clear, meaningful visualizations. My main focus is the **backend**, where I feel most at home, but I also love building small frontend projects to bring that data to life.
+
+Right now I'm working on a **personal ecosystem that turns everyday life into a role-playing game**. You log your activities and they shape your character's attributes, class and level over time, with monthly reports and a yearly chronicle of your progress. It's made of several independent projects that also work together: a mobile app to log activities, a central API that stores everything, a collector that pulls data from services like GitHub, Strava or Steam, an analysis service that finds trends and writes the reports, a web dashboard full of charts, and a desktop app that tracks how you spend time on your computer. Each one is built in a different language and can run on its own.
+
+When it comes to writing code, I care a lot about doing things properly. I follow **clean code** principles and good programming practices, and I like structuring projects with **MVC** or **hexagonal architecture** so they stay easy to test, maintain and grow.
+
+Outside of coding, I'm drawn to anything that involves logic: video games, chess and solving Rubik's cubes. But my real obsession is **tracking things**. Expenses, routines, sleep, the books I read… if it can be measured, I'm probably measuring it. That's pretty much how the project above was born.
 
 ## 🛠️ Tecnologías
 
