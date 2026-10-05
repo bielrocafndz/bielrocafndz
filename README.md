@@ -29,7 +29,7 @@ Outside of coding, I am drawn to anything that involves logic; videogames, chess
   <img src="https://skillicons.dev/icons?i=postgres,sqlite,redis,docker,githubactions,git" alt="tools"/>
 </p>
 
-## 📊 Mis números (se actualizan solos cada día)
+## Charts
 
 <!-- Generado por scripts/generate.mjs con Recharts: no edites entre los marcadores -->
 <!-- CHARTS:START -->
@@ -50,23 +50,23 @@ Outside of coding, I am drawn to anything that involves logic; videogames, chess
   <img src="https://streak-stats.demolab.com?user=TU_USUARIO&theme=transparent&hide_border=true&ring=a371f7&fire=58a6ff&currStreakLabel=a371f7&sideLabels=8b949e&dates=8b949e&currStreakNum=8b949e&sideNums=8b949e" alt="racha" height="165"/>
 </p>
 
-## 🚀 Proyectos
+## Projects
 
 <!-- PROJECTS:START -->
-### 📌 Destacados
+### Outstanding
 
 <p align="center">
 <a href="https://github.com/bielrocafndz/bunq-salary-splitter"><img src="https://github-readme-stats.vercel.app/api/pin/?username=bielrocafndz&repo=bunq-salary-splitter&theme=transparent&hide_border=true&title_color=a371f7&icon_color=a371f7&text_color=8b949e" alt="bunq-salary-splitter" width="49%"/></a>
 </p>
 
-### 🕒 Trabajando últimamente en
+### Trabajando últimamente en
 
-| Proyecto | Descripción | Lenguaje | ⭐ | Actualizado |
+| Proyecto | Descripción | Lenguaje | Stars | Actualizado |
 |:--|:--|:--|:-:|:--|
-| [**bunq-salary-splitter**](https://github.com/bielrocafndz/bunq-salary-splitter) | — | 🐍 Python | 0 | hace 3 días |
+| [**bunq-salary-splitter**](https://github.com/bielrocafndz/bunq-salary-splitter) | — | Python | 0 | hace 3 días |
 <!-- PROJECTS:END -->
 
-## 🐍 Mis contribuciones
+## My contributions
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./charts/snake-dark.svg">
