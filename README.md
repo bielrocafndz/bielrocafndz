@@ -36,20 +36,19 @@ Outside of coding, I am drawn to anything that involves logic; videogames, chess
 <p align="center"><b>1</b> repos públicos · <b>0</b> ⭐ · <b>1</b> lenguajes · último push hace 3 días</p>
 
 <p align="center">
-<img src="./charts/languages.svg" alt="Lenguajes más usados" width="49%"/>
-<img src="./charts/timeline.svg" alt="Actividad creando proyectos" width="49%"/>
+<img src="./charts/languages.svg" alt="Most used languages" width="49%"/>
+<img src="./charts/timeline.svg" alt="Project activity" width="49%"/>
 </p>
 <!-- CHARTS:END -->
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=TU_USUARIO&bg_color=00000000&color=8b949e&line=a371f7&point=58a6ff&area=true&area_color=a371f7&hide_border=true" alt="actividad" width="98%"/>
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=bielrocafndz&bg_color=00000000&color=8b949e&line=3fd9c4&point=00a693&area=true&area_color=00a693&hide_border=true&hide_title=true&radius=8" alt="activity" width="98%"/>
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=TU_USUARIO&show_icons=true&theme=transparent&hide_border=true&title_color=a371f7&icon_color=a371f7&text_color=8b949e" alt="stats" height="165"/>
-  <img src="https://streak-stats.demolab.com?user=TU_USUARIO&theme=transparent&hide_border=true&ring=a371f7&fire=58a6ff&currStreakLabel=a371f7&sideLabels=8b949e&dates=8b949e&currStreakNum=8b949e&sideNums=8b949e" alt="racha" height="165"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=bielrocafndz&show_icons=true&theme=transparent&hide_border=true&hide_title=true&title_color=3fd9c4&icon_color=00a693&text_color=8b949e&ring_color=3fd9c4&border_radius=8" alt="stats" width="49%"/>
+  <img src="https://streak-stats.demolab.com?user=bielrocafndz&theme=transparent&hide_border=true&ring=3fd9c4&fire=00a693&currStreakLabel=3fd9c4&sideLabels=8b949e&dates=8b949e&currStreakNum=eafff9&sideNums=eafff9&border_radius=8" alt="streak" width="49%"/>
 </p>
-
 ## Projects
 
 <!-- PROJECTS:START -->
