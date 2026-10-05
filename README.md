@@ -1,6 +1,6 @@
 <!-- Banner animado -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:a371f7,100:58a6ff&height=180&section=header&text=Welcome%20to%20bielrocafndz!&fontSize=38&fontColor=ffffff&fontAlignY=35" alt="banner"/>
+  <img src="[https://capsule-render.vercel.app/api?type=waving&color=0:a371f7,100:58a6ff&height=180&section=header&text=Welcome%20to%20bielrocafndz!&fontSize=38&fontColor=ffffff&fontAlignY=35](https://capsule-render.vercel.app/api?type=blur&height=300&color=0:0d0000,50:5c0a0a,100:a3172b&section=header&text=Biel%20Roca&fontSize=70&fontColor=ffffff&fontAlignY=42&desc=also%20known%20as%20Broca&descSize=22&descAlignY=62&descColor=f5c6cb&animation=fadeIn)" alt="banner"/>
 </p>
 
 <p align="center">
