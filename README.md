@@ -9,20 +9,24 @@
 
 ## About me
 
-## 🧑‍💻 About me
+I am a **full stack developer** who loves turning data into clear, meaningful visualization. My main focus is the **backend**, where I feel most at home, but I also love building small web frontend projects to bring that data to life. 
 
-I'm a **full stack developer** who enjoys turning data into clear, meaningful visualizations. My main focus is the **backend**, where I feel most at home, but I also love building small frontend projects to bring that data to life.
+Right now I am working on my **personal ecosystem that turns everday life into a role-playing game**. You log your activities and they shape your character's attributes, class and level over time, with monthly reports and a yearly chronicle of your progress on this game called life. It is made of several independent projects that also work together; a mobile app to log the activities during the day, a central API that stores everything, a collector that pulls data from services like GitHub, Strava or Steam, and many other functionalities. Each of this applications is built in a different (most optimal) language and can run on its own.
 
-Right now I'm working on a **personal ecosystem that turns everyday life into a role-playing game**. You log your activities and they shape your character's attributes, class and level over time, with monthly reports and a yearly chronicle of your progress. It's made of several independent projects that also work together: a mobile app to log activities, a central API that stores everything, a collector that pulls data from services like GitHub, Strava or Steam, an analysis service that finds trends and writes the reports, a web dashboard full of charts, and a desktop app that tracks how you spend time on your computer. Each one is built in a different language and can run on its own.
+When it comes to writing code, I put special attention to do things properly. I follow **clean code** principles and good programming practices, and I like to structure my projects with **MVC** or **hexagonal architecture** so they stay easy to test, maintain and grow.
 
-When it comes to writing code, I care a lot about doing things properly. I follow **clean code** principles and good programming practices, and I like structuring projects with **MVC** or **hexagonal architecture** so they stay easy to test, maintain and grow.
+Outside of coding, I am drawn to anything that involves logic; videogames, chess and solving Rubik's cubes. But my real obsession is **automation** and **tracking day by day things**. Expenses, routies, sleep, the books I read... if it can be measured, I am probably measuring it haha. That's pretty much how the project above was born.
 
-Outside of coding, I'm drawn to anything that involves logic: video games, chess and solving Rubik's cubes. But my real obsession is **tracking things**. Expenses, routines, sleep, the books I read… if it can be measured, I'm probably measuring it. That's pretty much how the project above was born.
+**Let's connect:** [LinkedIn](https://www.linkedin.com/in/biel-roca) · [Linktree](https://linktr.ee/bielrocafndz) · [Email](bielrocafndz@gmail.com)
 
-## 🛠️ Tecnologías
+## Technologies
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=js,ts,react,nextjs,tailwind,nodejs,python,git,figma&perline=9" alt="skills"/>
+  <img src="https://skillicons.dev/icons?i=java,cs,python,go,js,ts,dart" alt="languages"/>
+  <br/><br/>
+  <img src="https://skillicons.dev/icons?i=spring,dotnet,fastapi,react,flutter" alt="frameworks"/>
+  <br/><br/>
+  <img src="https://skillicons.dev/icons?i=postgres,sqlite,redis,docker,githubactions,git" alt="tools"/>
 </p>
 
 ## 📊 Mis números (se actualizan solos cada día)
