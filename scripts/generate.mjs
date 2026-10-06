@@ -237,25 +237,35 @@ function projectsSection(repos) {
     .sort((a, b) => b.stargazers_count - a.stargazers_count || new Date(b.pushed_at) - new Date(a.pushed_at))
     .slice(0, 4);
   const pin = (r) =>
-    `<a href="${r.html_url}"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=${r.name}&theme=transparent&hide_border=true&title_color=${ACCENT.slice(1)}&icon_color=${SECONDARY.slice(1)}&text_color=${MUTED.slice(1)}" alt="${r.name}" width="49%"/></a>`;
-  const recent = [...repos].sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at)).slice(0, 6);
-  const rows = recent.map((r) => {
-    const name = `[**${r.name}**](${r.html_url})${r.homepage ? ` · [🔗 demo](${r.homepage})` : ''}`;
-    const desc = (r.description || '—').replace(/\|/g, '\\|');
-    const lang = r.language ? `${LANG_EMOJI[r.language] || '📦'} ${r.language}` : '—';
-    return `| ${name} | ${desc} | ${lang} | ${r.stargazers_count} | ${rel(r.pushed_at)} |`;
-  });
-  return `### 📌 Featured
+    `<a href="${r.html_url}"><img src="https://github-readme-stats-lyart-mu.vercel.app/api/pin/?username=${USER}&repo=${r.name}&theme=transparent&hide_border=true&title_color=${ACCENT.slice(1)}&icon_color=${SECONDARY.slice(1)}&text_color=${MUTED.slice(1)}&border_radius=8" alt="${r.name}" width="49%"/></a>`;
+
+  let out = `### 📌 Featured
 
 <p align="center">
 ${featured.map(pin).join('\n')}
-</p>
+</p>`;
+
+  // La lista de recientes solo aparece cuando hay más repos de los que caben en Featured,
+  // para no repetir los mismos proyectos dos veces
+  if (repos.length > featured.length) {
+    const recent = [...repos].sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at)).slice(0, 5);
+    const items = recent.map((r) => {
+      const meta = [
+        r.language ? `${LANG_EMOJI[r.language] || '📦'} ${r.language}` : null,
+        r.stargazers_count ? `⭐ ${r.stargazers_count}` : null,
+        `updated ${rel(r.pushed_at)}`,
+        r.homepage ? `<a href="${r.homepage}">🔗 demo</a>` : null,
+      ].filter(Boolean).join(' · ');
+      const desc = r.description ? ` — ${esc(r.description)}` : '';
+      return `- **[${r.name}](${r.html_url})**${desc}<br><sub>${meta}</sub>`;
+    });
+    out += `
 
 ### 🕒 Recently working on
 
-| Project | Description | Language | ⭐ | Updated |
-|:--|:--|:--|:-:|:--|
-${rows.join('\n')}`;
+${items.join('\n')}`;
+  }
+  return out;
 }
 
 function replaceSection(text, name, content) {
