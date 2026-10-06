@@ -41,14 +41,6 @@ Outside of coding, I am drawn to anything that involves logic; videogames, chess
 </p>
 <!-- CHARTS:END -->
 
-<!-- PROJECTS:START -->
-### 📌 Featured
-
-<p align="center">
-<a href="https://github.com/bielrocafndz/bunq-salary-splitter"><img src="https://github-readme-stats-lyart-mu.vercel.app/api/pin/?username=bielrocafndz&repo=bunq-salary-splitter&theme=transparent&hide_border=true&title_color=3fd9c4&icon_color=00a693&text_color=8b949e&border_radius=8" alt="bunq-salary-splitter" width="49%"/></a>
-</p>
-<!-- PROJECTS:END -->
-
 ## My contributions
 
 <picture>
