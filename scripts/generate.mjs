@@ -304,7 +304,7 @@ if (repos.filter((r) => r.stargazers_count > 0).length >= 2) await save('stars.s
 if (Object.keys(topicCounts).length >= 3) await save('topics.svg', 'Project topics', topicsChart(topicCounts));
 
 const summary = repos.length
-  ? `<p align="center"><b>${repos.length}</b> public repo${repos.length === 1 ? '' : 's'} · <b>${totalStars}</b> ⭐ · <b>${langCount}</b> language${langCount === 1 ? '' : 's'} · last push ${rel(repos[0].pushed_at)}</p>`
+  ? `<p align="center"><b>${repos.length}</b> public repo${repos.length === 1 ? '' : 's'} · <b>${totalStars}</b> Stars · <b>${langCount}</b> language${langCount === 1 ? '' : 's'} · last push ${rel(repos[0].pushed_at)}</p>`
   : '';
 const chartsMd = `${summary}
 
