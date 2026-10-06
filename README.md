@@ -33,7 +33,7 @@ Outside of coding, I am drawn to anything that involves logic; videogames, chess
 
 <!-- Generado por scripts/generate.mjs con Recharts: no edites entre los marcadores -->
 <!-- CHARTS:START -->
-<p align="center"><b>1</b> public repo · <b>0</b> Stars · <b>1</b> Programming languages · Last push 3 days ago</p>
+<p align="center"><b>1</b> public repo · <b>0</b> ⭐ · <b>1</b> language · last push 4 days ago</p>
 
 <p align="center">
 <img src="./charts/languages.svg" alt="Most used languages" width="49%"/>
@@ -42,17 +42,11 @@ Outside of coding, I am drawn to anything that involves logic; videogames, chess
 <!-- CHARTS:END -->
 
 <!-- PROJECTS:START -->
-### Outstanding
+### 📌 Featured
 
 <p align="center">
-<a href="https://github.com/bielrocafndz/bunq-salary-splitter"><img src="https://github-readme-stats.vercel.app/api/pin/?username=bielrocafndz&repo=bunq-salary-splitter&theme=transparent&hide_border=true&title_color=a371f7&icon_color=a371f7&text_color=8b949e" alt="bunq-salary-splitter" width="49%"/></a>
+<a href="https://github.com/bielrocafndz/bunq-salary-splitter"><img src="https://github-readme-stats-lyart-mu.vercel.app/api/pin/?username=bielrocafndz&repo=bunq-salary-splitter&theme=transparent&hide_border=true&title_color=3fd9c4&icon_color=00a693&text_color=8b949e&border_radius=8" alt="bunq-salary-splitter" width="49%"/></a>
 </p>
-
-### Trabajando últimamente en
-
-| Proyecto | Descripción | Lenguaje | Stars | Actualizado |
-|:--|:--|:--|:-:|:--|
-| [**bunq-salary-splitter**](https://github.com/bielrocafndz/bunq-salary-splitter) | — | Python | 0 | hace 3 días |
 <!-- PROJECTS:END -->
 
 ## My contributions
