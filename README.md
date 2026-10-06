@@ -41,16 +41,6 @@ Outside of coding, I am drawn to anything that involves logic; videogames, chess
 </p>
 <!-- CHARTS:END -->
 
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=bielrocafndz&bg_color=00000000&color=8b949e&line=3fd9c4&point=00a693&area=true&area_color=00a693&hide_border=true&hide_title=true&radius=8" alt="activity" width="98%"/>
-</p>
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=bielrocafndz&show_icons=true&theme=transparent&hide_border=true&hide_title=true&title_color=3fd9c4&icon_color=00a693&text_color=8b949e&ring_color=3fd9c4&border_radius=8" alt="stats" width="49%"/>
-  <img src="https://streak-stats.demolab.com?user=bielrocafndz&theme=transparent&hide_border=true&ring=3fd9c4&fire=00a693&currStreakLabel=3fd9c4&sideLabels=8b949e&dates=8b949e&currStreakNum=eafff9&sideNums=eafff9&border_radius=8" alt="streak" width="49%"/>
-</p>
-## Projects
-
 <!-- PROJECTS:START -->
 ### Outstanding
 
@@ -71,7 +61,3 @@ Outside of coding, I am drawn to anything that involves logic; videogames, chess
   <source media="(prefers-color-scheme: dark)" srcset="./charts/snake-dark.svg">
   <img alt="serpiente comiéndose mis contribuciones" src="./charts/snake.svg">
 </picture>
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:58a6ff,100:a371f7&height=100&section=footer" alt="footer"/>
-</p>
