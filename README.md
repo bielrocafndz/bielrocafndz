@@ -33,7 +33,7 @@ Outside of coding, I am drawn to anything that involves logic; videogames, chess
 
 <!-- Generado por scripts/generate.mjs con Recharts: no edites entre los marcadores -->
 <!-- CHARTS:START -->
-<p align="center"><b>1</b> public repo · <b>0</b> Stars · <b>1</b> language · last push 4 days ago</p>
+<p align="center"><b>2</b> public repos · <b>0</b> Stars · <b>9</b> languages · last push yesterday</p>
 
 <p align="center">
 <img src="./charts/languages.svg" alt="Most used languages" width="49%"/>
